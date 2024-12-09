@@ -85,7 +85,7 @@ def display_top_5(file_path, filtered_users, item_mapping_file_path, mssv_input,
         st.write(f"{title}: Không có dữ liệu điểm hoặc sinh viên không đủ điều kiện.")
 
 # Hàm để mã hóa mssv_input với dữ liệu trong mssv.json và lấy mssv_raw
-def decode_mssv(mssv_input, mssv_json_file='../Web-MXH-Nhóm6/mssv.json'):
+def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6/mssv.json'):
     try:
         # Đọc dữ liệu từ file mssv.json
         with open(mssv_json_file, 'r', encoding='utf-8') as f:
@@ -113,7 +113,7 @@ def decode_mssv(mssv_input, mssv_json_file='../Web-MXH-Nhóm6/mssv.json'):
 # Hàm run để xử lý toàn bộ quá trình
 def run(mssv_input):
     # Đường dẫn đến các tệp dữ liệu
-    user_list_file_path = "../notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
+    user_list_file_path = "notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
     item_mapping_file_path = "../Data\Train_test_data\Data_mapping\mp_mamh.txt"
 
     # Tải danh sách người dùng thỏa mãn điều kiện
