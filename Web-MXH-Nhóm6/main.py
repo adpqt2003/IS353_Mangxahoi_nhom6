@@ -103,10 +103,10 @@ def decode_mssv(mssv_input, mssv_json_file='./mssv.json'):
             st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
             return mssv_input
     except FileNotFoundError:
-        print(f"File {mssv_json_file} không tồn tại.")
+        st.sidebar.warning(f"File {mssv_json_file} không tồn tại.")
         return None
     except json.JSONDecodeError:
-        print(f"File {mssv_json_file} không phải là file JSON hợp lệ.")
+        st.sidebar.warning(f"File {mssv_json_file} không phải là file JSON hợp lệ.")
         return None
 
 
