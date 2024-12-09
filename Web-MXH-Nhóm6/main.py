@@ -138,25 +138,25 @@ def run(mssv_input):
         st.title(f'Môn học đề xuất cho sinh viên {mssv_begin}')
         file_paths = [
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\BPRMF\KGAT_data\embed-dim64_lr0.0001_pretrain2\cf_scores_bprmf.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\BPRMF\KGAT_data\embed-dim64_lr0.0001_pretrain2\cf_scores_bprmf.npy",
                 "Matrix Factorization (BPRMF)"),
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_fm0.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_fm0.npy",
                 "Factorization Machine without user_info"),
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info1\cf_scores_fm1.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info1\cf_scores_fm1.npy",
                 "Factorization Machine with user_info"),
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
                 "Neural Factorization Machine (NFM) without user_ìnfo"),
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
                 "Neural Factorization Machine (NFM) with user_info"),
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_kgat.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_kgat.npy",
                 "KGAT"),
             (
-                r"notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_embed.npy",
+                "notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_embed.npy",
                 "KGAT EMBED"),
         ]
 
