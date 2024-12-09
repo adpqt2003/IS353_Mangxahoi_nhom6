@@ -23,7 +23,7 @@ def load_filtered_users(user_list_file_path):
                         sinhvien_nam = int(parts[12])  # Lọc theo sinhvien_nam
                         filtered_users[org_id] = (remap_id, sinhvien_nam)
                     except ValueError:
-                        st.sidebar.warning(f"Không thể chuyển đổi giá trị trong dòng: {line}")
+                        print(f"Không thể chuyển đổi giá trị trong dòng: {line}")
     except FileNotFoundError:
         st.sidebar.warning(f"Tệp {user_list_file_path} không tồn tại.")
     return filtered_users
@@ -130,7 +130,6 @@ def run(mssv_input):
     else:
         # Kiểm tra sinhvien_nam >= 3
         sinhvien_nam = filtered_users.get(mssv_input)[1]
-        st.sidebar.warning(f"sinhvien_nam {sinhvien_nam}")
         if sinhvien_nam is not None and sinhvien_nam < 3:
             st.sidebar.warning(f"MSSV {mssv_begin} không đủ điều kiện (sinhvien_nam < 3).")
             return
@@ -139,25 +138,25 @@ def run(mssv_input):
         st.title(f'Môn học đề xuất cho sinh viên {mssv_begin}')
         file_paths = [
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\BPRMF\KGAT_data\embed-dim64_lr0.0001_pretrain2\cf_scores_bprmf.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\BPRMF\KGAT_data\embed-dim64_lr0.0001_pretrain2\cf_scores_bprmf.npy",
                 "Matrix Factorization (BPRMF)"),
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_fm0.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_fm0.npy",
                 "Factorization Machine without user_info"),
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info1\cf_scores_fm1.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info1\cf_scores_fm1.npy",
                 "Factorization Machine with user_info"),
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
                 "Neural Factorization Machine (NFM) without user_ìnfo"),
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
                 "Neural Factorization Machine (NFM) with user_info"),
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_kgat.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_kgat.npy",
                 "KGAT"),
             (
-                r"../notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_embed.npy",
+                r"notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_embed.npy",
                 "KGAT EMBED"),
         ]
 
