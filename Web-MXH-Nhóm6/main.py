@@ -112,8 +112,8 @@ def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
 # Hàm run để xử lý toàn bộ quá trình
 def run(mssv_input):
     # Đường dẫn đến các tệp dữ liệu
-    user_list_file_path = "/notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
-    item_mapping_file_path = "/Data\Train_test_data\Data_mapping\mp_mamh.txt"
+    user_list_file_path = "./notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
+    item_mapping_file_path = "./Data\Train_test_data\Data_mapping\mp_mamh.txt"
 
     # Tải danh sách người dùng thỏa mãn điều kiện
     filtered_users = load_filtered_users(user_list_file_path)
