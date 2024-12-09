@@ -86,7 +86,6 @@ def display_top_5(file_path, filtered_users, item_mapping_file_path, mssv_input,
 
 # Hàm để mã hóa mssv_input với dữ liệu trong mssv.json và lấy mssv_raw
 def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6\mssv.json'):
-def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
     try:
         # Đọc dữ liệu từ file mssv.json
         with open(mssv_json_file, 'r', encoding='utf-8') as f:
