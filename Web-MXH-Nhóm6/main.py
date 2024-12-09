@@ -2,12 +2,14 @@ import streamlit as st
 import numpy as np
 import polars as pl
 import pandas as pd
+from io import StringIO
 import json
 
 # Đọc tệp user_list.txt và lọc người dùng theo điều kiện
 def load_filtered_users(user_list_file_path):
     filtered_users = {}
     try:
+
         with open(user_list_file_path, 'r', encoding='utf-8') as f:
             for line in f:
                 # Bỏ qua dòng tiêu đề
@@ -19,8 +21,7 @@ def load_filtered_users(user_list_file_path):
                     try:
                         remap_id = int(parts[1])  # remap_id là số nguyên
                         sinhvien_nam = int(parts[12])  # Lọc theo sinhvien_nam
-                        if sinhvien_nam >= 3:
-                            filtered_users[org_id] = remap_id
+                        filtered_users[org_id] = (remap_id, sinhvien_nam)
                     except ValueError:
                         print(f"Không thể chuyển đổi giá trị trong dòng: {line}")
     except FileNotFoundError:
@@ -35,7 +36,7 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
         print(f"Tệp {file_path} không tồn tại.")
         return []
 
-    user_index = filtered_users[mssv_input]
+    user_index = filtered_users[mssv_input][0]
 
     if len(scores) <= user_index:
         print("Chỉ số user không hợp lệ.")
@@ -121,14 +122,19 @@ def run(mssv_input):
     if mssv_input != "":
         mssv_input = decode_mssv(mssv_input)
 
-
     if mssv_input == "":
         # Nếu MSSV chưa nhập, hiển thị yêu cầu nhập MSSV
         st.sidebar.success("Vui lòng nhập mã số sinh viên để tiếp tục.")
     elif mssv_input not in filtered_users:
         # Nếu MSSV không hợp lệ
-        st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
+        st.sidebar.warning(f"MSSV {mssv_input} không đủ điều kiện.")
     else:
+        # Kiểm tra sinhvien_nam >= 3
+        sinhvien_nam = filtered_users.get(mssv_input)[1]
+        if sinhvien_nam is not None and sinhvien_nam < 3:
+            st.sidebar.warning(f"MSSV {mssv_input} không đủ điều kiện (sinhvien_nam < 3).")
+            return
+
         # Hiển thị giao diện Streamlit
         st.title(f'Môn học đề xuất cho sinh viên {mssv_begin}')
         file_paths = [
