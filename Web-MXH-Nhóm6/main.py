@@ -94,10 +94,9 @@ def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
         # Kiểm tra nếu mssv_input có trong file
         for value in mssv_data.values():
             for item in value:
-                st.sidebar.warning(f"value {value} item {item}")
                 if item['mssv'] == mssv_input:
                     mssv_raw = item['mssv_raw']
-                    print(mssv_raw)
+                    st.sidebar.warning(mssv_raw)
                     return mssv_raw
         else:
             st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
