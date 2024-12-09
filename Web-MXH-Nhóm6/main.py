@@ -26,7 +26,7 @@ def load_filtered_users(user_list_file_path):
                     except ValueError:
                         st.sidebar.warning(f"Không thể chuyển đổi giá trị trong dòng: {line}")
     except FileNotFoundError:
-        print(f"Tệp {user_list_file_path} không tồn tại.")
+        st.sidebar.warning(f"Tệp {user_list_file_path} không tồn tại.")
     return filtered_users
 
 # Hàm lấy top 5 items tương tự như trước nhưng có ánh xạ từ filtered_users
