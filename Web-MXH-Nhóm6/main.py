@@ -25,7 +25,7 @@ def load_filtered_users(user_list_file_path):
                     except ValueError:
                         print(f"Không thể chuyển đổi giá trị trong dòng: {line}")
     except FileNotFoundError:
-        st.sidebar.warning(f"Tệp {user_list_file_path} không tồn tại.")
+        print(f"Tệp {user_list_file_path} không tồn tại.")
     return filtered_users
 
 # Hàm lấy top 5 items tương tự như trước nhưng có ánh xạ từ filtered_users
@@ -33,7 +33,7 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
     try:
         scores = np.load(file_path)
     except FileNotFoundError:
-        st.sidebar.warning(f"Tệp {file_path} không tồn tại.")
+        print(f"Tệp {file_path} không tồn tại.")
         return []
 
     user_index = filtered_users[mssv_input][0]
@@ -60,7 +60,7 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
                     except ValueError:
                         continue
     except FileNotFoundError:
-        st.sidebar.warning(f"Tệp ánh xạ {item_mapping_file_path} không tồn tại.")
+        print(f"Tệp ánh xạ {item_mapping_file_path} không tồn tại.")
 
     result = []
     for item_index in top_5_items:
@@ -85,7 +85,7 @@ def display_top_5(file_path, filtered_users, item_mapping_file_path, mssv_input,
         st.write(f"{title}: Không có dữ liệu điểm hoặc sinh viên không đủ điều kiện.")
 
 # Hàm để mã hóa mssv_input với dữ liệu trong mssv.json và lấy mssv_raw
-def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6/mssv.json'):
+def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
     try:
         # Đọc dữ liệu từ file mssv.json
         with open(mssv_json_file, 'r', encoding='utf-8') as f:
@@ -96,6 +96,7 @@ def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6/mssv.json'):
             for item in value:
                 if item['mssv'] == mssv_input:
                     mssv_raw = item['mssv_raw']
+                    print(mssv_raw)
                     return mssv_raw
         else:
             st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
@@ -112,7 +113,7 @@ def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6/mssv.json'):
 def run(mssv_input):
     # Đường dẫn đến các tệp dữ liệu
     user_list_file_path = "notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
-    item_mapping_file_path = "Data/Train_test_data/Data_mapping/mp_mamh.txt"
+    item_mapping_file_path = "/Data/Train_test_data/Data_mapping/mp_mamh.txt"
 
     # Tải danh sách người dùng thỏa mãn điều kiện
     filtered_users = load_filtered_users(user_list_file_path)
@@ -126,12 +127,12 @@ def run(mssv_input):
         st.sidebar.success("Vui lòng nhập mã số sinh viên để tiếp tục.")
     elif mssv_input not in filtered_users:
         # Nếu MSSV không hợp lệ
-        st.sidebar.warning(f"MSSV {mssv_begin} không có trong dữ liệu.")
+        st.sidebar.warning(f"MSSV {mssv_input} không đủ điều kiện.")
     else:
         # Kiểm tra sinhvien_nam >= 3
         sinhvien_nam = filtered_users.get(mssv_input)[1]
         if sinhvien_nam is not None and sinhvien_nam < 3:
-            st.sidebar.warning(f"MSSV {mssv_begin} không đủ điều kiện (sinhvien_nam < 3).")
+            st.sidebar.warning(f"MSSV {mssv_input} không đủ điều kiện (sinhvien_nam < 3).")
             return
 
         # Hiển thị giao diện Streamlit
