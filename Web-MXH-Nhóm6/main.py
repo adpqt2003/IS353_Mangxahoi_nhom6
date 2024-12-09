@@ -22,7 +22,6 @@ def load_filtered_users(user_list_file_path):
                         remap_id = int(parts[1])  # remap_id là số nguyên
                         sinhvien_nam = int(parts[12])  # Lọc theo sinhvien_nam
                         filtered_users[org_id] = (remap_id, sinhvien_nam)
-                        st.sidebar.warning(filtered_users)
                     except ValueError:
                         st.sidebar.warning(f"Không thể chuyển đổi giá trị trong dòng: {line}")
     except FileNotFoundError:
