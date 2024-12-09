@@ -85,7 +85,7 @@ def display_top_5(file_path, filtered_users, item_mapping_file_path, mssv_input,
         st.write(f"{title}: Không có dữ liệu điểm hoặc sinh viên không đủ điều kiện.")
 
 # Hàm để mã hóa mssv_input với dữ liệu trong mssv.json và lấy mssv_raw
-def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6\mssv.json'):
+def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6/mssv.json'):
     try:
         # Đọc dữ liệu từ file mssv.json
         with open(mssv_json_file, 'r', encoding='utf-8') as f:
@@ -111,8 +111,8 @@ def decode_mssv(mssv_input, mssv_json_file='Web-MXH-Nhóm6\mssv.json'):
 # Hàm run để xử lý toàn bộ quá trình
 def run(mssv_input):
     # Đường dẫn đến các tệp dữ liệu
-    user_list_file_path = "notebooks\Model\KGAT-pytorch\KGAT_data\user_list.txt"
-    item_mapping_file_path = "Data\Train_test_data\Data_mapping\mp_mamh.txt"
+    user_list_file_path = "notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
+    item_mapping_file_path = "Data/Train_test_data/Data_mapping/mp_mamh.txt"
 
     # Tải danh sách người dùng thỏa mãn điều kiện
     filtered_users = load_filtered_users(user_list_file_path)
@@ -138,25 +138,25 @@ def run(mssv_input):
         st.title(f'Môn học đề xuất cho sinh viên {mssv_begin}')
         file_paths = [
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\BPRMF\KGAT_data\embed-dim64_lr0.0001_pretrain2\cf_scores_bprmf.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/BPRMF/KGAT_data/embed-dim64_lr0.0001_pretrain2/cf_scores_bprmf.npy",
                 "Matrix Factorization (BPRMF)"),
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_fm0.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/NFM/KGAT_data/fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0/cf_scores_fm0.npy",
                 "Factorization Machine without user_info"),
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info1\cf_scores_fm1.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/NFM/KGAT_data/fm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info1/cf_scores_fm1.npy",
                 "Factorization Machine with user_info"),
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/NFM/KGAT_data/nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0/cf_scores_nfm0.npy",
                 "Neural Factorization Machine (NFM) without user_ìnfo"),
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\NFM\KGAT_data\nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0\cf_scores_nfm0.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/NFM/KGAT_data/nfm_embed-dim64_64-32-16_lr0.0001_pretrain2_user-info0/cf_scores_nfm0.npy",
                 "Neural Factorization Machine (NFM) with user_info"),
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_kgat.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/KGAT/KGAT_data/embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2/cf_scores_kgat.npy",
                 "KGAT"),
             (
-                "notebooks\Model\KGAT-pytorch\trained_model\KGAT\KGAT_data\embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2\cf_scores_embed.npy",
+                "notebooks/Model/KGAT-pytorch/trained_model/KGAT/KGAT_data/embed-dim64_relation-dim64_random-walk_bi-interaction_64-32-16_lr0.0001_pretrain2/cf_scores_embed.npy",
                 "KGAT EMBED"),
         ]
 
