@@ -85,7 +85,7 @@ def display_top_5(file_path, filtered_users, item_mapping_file_path, mssv_input,
         st.write(f"{title}: Không có dữ liệu điểm hoặc sinh viên không đủ điều kiện.")
 
 # Hàm để mã hóa mssv_input với dữ liệu trong mssv.json và lấy mssv_raw
-def decode_mssv(mssv_input, mssv_json_file='./mssv.json'):
+def decode_mssv(mssv_input, mssv_json_file='../Web-MXH-Nhóm6/mssv.json'):
     try:
         # Đọc dữ liệu từ file mssv.json
         with open(mssv_json_file, 'r', encoding='utf-8') as f:
@@ -94,6 +94,7 @@ def decode_mssv(mssv_input, mssv_json_file='./mssv.json'):
         # Kiểm tra nếu mssv_input có trong file
         for value in mssv_data.values():
             for item in value:
+                st.sidebar.warning(f"value {value} item {item}")
                 if item['mssv'] == mssv_input:
                     mssv_raw = item['mssv_raw']
                     print(mssv_raw)
@@ -102,10 +103,10 @@ def decode_mssv(mssv_input, mssv_json_file='./mssv.json'):
             st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
             return mssv_input
     except FileNotFoundError:
-        print(f"File {mssv_json_file} không tồn tại.")
+        st.sidebar.warning(f"File {mssv_json_file} không tồn tại.")
         return None
     except json.JSONDecodeError:
-        print(f"File {mssv_json_file} không phải là file JSON hợp lệ.")
+        st.sidebar.warning(f"File {mssv_json_file} không phải là file JSON hợp lệ.")
         return None
 
 
