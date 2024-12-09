@@ -1,7 +1,0 @@
-original_value remap_id
-monhoc_diem 0
-monhoc_hocky 1
-monhoc_sinhvien_nam 2
-monhoc_sotc 3
-monhoc_trangthai 4
-monhoc_khoa 5

@@ -1,7 +1,0 @@
-org_id remap_id
-không 0
-khá 1
-giỏi 2
-tbkhá 3
-trungbìnhkhá 4
-xuấtsắc 5
