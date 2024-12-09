@@ -33,7 +33,7 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
     try:
         scores = np.load(file_path)
     except FileNotFoundError:
-        print(f"Tệp {file_path} không tồn tại.")
+        st.sidebar.warning(f"Tệp {file_path} không tồn tại.")
         return []
 
     user_index = filtered_users[mssv_input][0]
@@ -60,7 +60,7 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
                     except ValueError:
                         continue
     except FileNotFoundError:
-        print(f"Tệp ánh xạ {item_mapping_file_path} không tồn tại.")
+        st.sidebar.warning(f"Tệp ánh xạ {item_mapping_file_path} không tồn tại.")
 
     result = []
     for item_index in top_5_items:
