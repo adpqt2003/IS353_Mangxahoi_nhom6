@@ -1,0 +1,31 @@
+2024-12-09 00:10:03,091 - root - INFO - Namespace(seed=2019, model_type='nfm', data_name='KGAT_data', data_dir='./', use_user_info=1, use_pretrain=0, pretrain_embedding_dir='datasets/pretrain/', pretrain_model_path='trained_model/model.pth', embed_dim=64, hidden_dim_list='[64, 32, 16]', mess_dropout='[0.1, 0.1, 0.1]', l2loss_lambda=1e-05, train_batch_size=1024, test_batch_size=1024, test_cores=0, lr=0.0001, n_epoch=50, stopping_steps=10, print_every=50, evaluate_every=5, Ks='[1, 5, 10]\\', save_dir='trained_model/NFM/KGAT_data/nfm_embed-dim64_64-32-16_lr0.0001_pretrain0_user-info1/')
+2024-12-09 00:10:16,166 - root - INFO - n_users:              8273
+2024-12-09 00:10:16,167 - root - INFO - n_items:              421
+2024-12-09 00:10:16,167 - root - INFO - n_entities:           421
+2024-12-09 00:10:16,167 - root - INFO - n_user_attr:           10814
+2024-12-09 00:10:16,168 - root - INFO - n_users_entities:     11235
+2024-12-09 00:10:16,168 - root - INFO - n_cf_train:           321407
+2024-12-09 00:10:16,168 - root - INFO - n_cf_test:            8273
+2024-12-09 00:10:16,168 - root - INFO - shape of user_matrix: (8273, 10814)
+2024-12-09 00:10:16,168 - root - INFO - shape of feat_matrix: (421, 421)
+2024-12-09 00:10:16,176 - root - INFO - NFM(
+  (linear): Linear(in_features=11235, out_features=1, bias=True)
+  (hidden_layers): ModuleList(
+    (0): HiddenLayer(
+      (linear): Linear(in_features=64, out_features=64, bias=True)
+      (activation): ReLU()
+      (message_dropout): Dropout(p=0.1, inplace=False)
+    )
+    (1): HiddenLayer(
+      (linear): Linear(in_features=64, out_features=32, bias=True)
+      (activation): ReLU()
+      (message_dropout): Dropout(p=0.1, inplace=False)
+    )
+    (2): HiddenLayer(
+      (linear): Linear(in_features=32, out_features=16, bias=True)
+      (activation): ReLU()
+      (message_dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (h): Linear(in_features=16, out_features=1, bias=False)
+)
