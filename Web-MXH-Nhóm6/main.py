@@ -96,7 +96,6 @@ def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
             for item in value:
                 if item['mssv'] == mssv_input:
                     mssv_raw = item['mssv_raw']
-                    st.sidebar.warning(mssv_raw)
                     return mssv_raw
         else:
             st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
@@ -127,7 +126,7 @@ def run(mssv_input):
         st.sidebar.success("Vui lòng nhập mã số sinh viên để tiếp tục.")
     elif mssv_input not in filtered_users:
         # Nếu MSSV không hợp lệ
-        st.sidebar.warning(f"MSSV {mssv_begin} không đủ điều kiện.")
+        st.sidebar.warning(f"MSSV {mssv_begin} không có trong dữ liệu.")
     else:
         # Kiểm tra sinhvien_nam >= 3
         sinhvien_nam = filtered_users.get(mssv_input)[1]
