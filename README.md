@@ -10,7 +10,7 @@
 Đây là đồ án cho môn học IS353 - Mạng xã hội - Nhóm 6
 Đồ án này sẽ thực hiện các chạy các mô hình như là KGAT, Factorization Machine, Neural Factorization Machine, Bayesian Personalized Ranking Matrix Factorization trên bộ dữ liệu uit(được cung cấp).
 Đồ án có sự tham khảo bởi 2 đồ án khác:
-        [Hệ thống đề xuất cho MOOC](https://drive.google.com/drive/folders/1DZPvcWluXIlHK-LyXls4Ej4ze8BPH2yo)
+        [Hệ thống đề xuất cho MOOC](https://drive.google.com/drive/folders/1DZPvcWluXIlHK-LyXls4Ej4ze8BPH2yo), 
         [Hệ thống đề xuất cho UIT](https://drive.google.com/drive/folders/1E2zw9jS5222i8XKKGzWYlRsALtJYvLX_)  
 Các mô hình sử dụng được lấy từ link: https://github.com/LunaBlack/KGAT-pytorch?tab=readme-ov-file#environment-requirement
 ***
