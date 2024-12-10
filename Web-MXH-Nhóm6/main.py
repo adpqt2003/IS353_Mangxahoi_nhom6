@@ -127,12 +127,12 @@ def run(mssv_input):
         st.sidebar.success("Vui lòng nhập mã số sinh viên để tiếp tục.")
     elif mssv_input not in filtered_users:
         # Nếu MSSV không hợp lệ
-        st.sidebar.warning(f"MSSV {mssv_input} không đủ điều kiện.")
+        st.sidebar.warning(f"MSSV {mssv_begin} không đủ điều kiện.")
     else:
         # Kiểm tra sinhvien_nam >= 3
         sinhvien_nam = filtered_users.get(mssv_input)[1]
         if sinhvien_nam is not None and sinhvien_nam < 3:
-            st.sidebar.warning(f"MSSV {mssv_input} không đủ điều kiện (sinhvien_nam < 3).")
+            st.sidebar.warning(f"MSSV {mssv_begin} không đủ điều kiện (sinhvien_nam < 3).")
             return
 
         # Hiển thị giao diện Streamlit
