@@ -1,10 +1,10 @@
 # ReadMe.txt
 ## Tác giả:
-"Hồ Vũ An - 21521804"
-"Dương Uy Quan - 21521323"
-"Lê Thanh Phong - 21521271"
-"Nguyễn Thành Trung - 21521595"
-"Phạm Tiến Đạt - 21521948"
+"Hồ Vũ An - 21521804"  
+"Dương Uy Quan - 21521323"  
+"Lê Thanh Phong - 21521271"  
+"Nguyễn Thành Trung - 21521595"  
+"Phạm Tiến Đạt - 21521948"  
 ***
 ## 1. Giới thiệu chung
 Đây là đồ án cho môn học IS353 - Mạng xã hội - Nhóm 6
