@@ -9,7 +9,6 @@ import json
 def load_filtered_users(user_list_file_path):
     filtered_users = {}
     try:
-
         with open(user_list_file_path, 'r', encoding='utf-8') as f:
             for line in f:
                 # Bỏ qua dòng tiêu đề
@@ -28,6 +27,20 @@ def load_filtered_users(user_list_file_path):
         print(f"Tệp {user_list_file_path} không tồn tại.")
     return filtered_users
 
+# Đọc tệp user_list.txt và lọc người dùng theo điều kiện
+def load_users_item(user_list_file_path):
+    item_user = {}
+    try:
+        with open(user_list_file_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                parts = line.strip().split()
+                user_id = int(parts[0])
+                item_list = parts[1::1]
+                item_user[user_id] = item_list
+    except FileNotFoundError:
+        print(f"Tệp {user_list_file_path} không tồn tại.")
+    return item_user
+
 # Hàm lấy top 5 items tương tự như trước nhưng có ánh xạ từ filtered_users
 def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, mssv_input):
     try:
@@ -37,13 +50,15 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
         return []
 
     user_index = filtered_users[mssv_input][0]
-
+    user_items_path = "notebooks/Model/KGAT-pytorch/KGAT_data/train.txt"
+    item_index = load_users_item(user_items_path)
+    item_user = item_index[user_index]
     if len(scores) <= user_index:
         print("Chỉ số user không hợp lệ.")
         return []
 
     user_scores = scores[user_index]  # Lấy điểm của user
-    top_5_items = np.argsort(user_scores)[::-1][:5]  # Lấy 5 item có điểm số cao nhất
+    top_5_items = np.argsort(user_scores)[::-1]  # Lấy 5 item có điểm số cao nhất
 
     # Tải ánh xạ item
     remap_dict = {}
@@ -63,10 +78,18 @@ def get_top_5_items_filtered(file_path, filtered_users, item_mapping_file_path, 
         print(f"Tệp ánh xạ {item_mapping_file_path} không tồn tại.")
 
     result = []
+    item_len = 0
+
     for item_index in top_5_items:
+        if str(item_index) in item_user:
+            continue
+
         item_name = remap_dict.get(item_index, f"Item {item_index + 1}")
         result.append((item_name, user_scores[item_index]))
-
+        if item_len < 5:
+            item_len += 1
+        else:
+            break
     return result
 
 # Hiển thị top 5 môn học dựa trên file_path cụ thể.
@@ -96,7 +119,6 @@ def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
             for item in value:
                 if item['mssv'] == mssv_input:
                     mssv_raw = item['mssv_raw']
-                    print(mssv_raw)
                     return mssv_raw
         else:
             st.sidebar.warning(f"MSSV {mssv_input} không có trong dữ liệu.")
@@ -113,7 +135,7 @@ def decode_mssv(mssv_input, mssv_json_file='mssv.json'):
 def run(mssv_input):
     # Đường dẫn đến các tệp dữ liệu
     user_list_file_path = "notebooks/Model/KGAT-pytorch/KGAT_data/user_list.txt"
-    item_mapping_file_path = "/Data/Train_test_data/Data_mapping/mp_mamh.txt"
+    item_mapping_file_path = "Data/Train_test_data/Data_mapping/mp_mamh.txt"
 
     # Tải danh sách người dùng thỏa mãn điều kiện
     filtered_users = load_filtered_users(user_list_file_path)
@@ -127,7 +149,7 @@ def run(mssv_input):
         st.sidebar.success("Vui lòng nhập mã số sinh viên để tiếp tục.")
     elif mssv_input not in filtered_users:
         # Nếu MSSV không hợp lệ
-        st.sidebar.warning(f"MSSV {mssv_begin} không đủ điều kiện.")
+        st.sidebar.warning(f"MSSV {mssv_begin} không đúng.")
     else:
         # Kiểm tra sinhvien_nam >= 3
         sinhvien_nam = filtered_users.get(mssv_input)[1]
@@ -169,5 +191,4 @@ if __name__ == "__main__":
     # Sidebar để nhập MSSV
     st.sidebar.header("Đăng nhập")
     mssv_input = st.sidebar.text_input("Nhập mã số sinh viên:", value="")
-
     run(mssv_input)
