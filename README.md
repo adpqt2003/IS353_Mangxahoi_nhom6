@@ -1,4 +1,4 @@
-# ReadMe.txt
+# ReadMe.md  
 ## Tác giả:
 "Hồ Vũ An - 21521804"  
 "Dương Uy Quan - 21521323"  
